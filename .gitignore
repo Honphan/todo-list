@@ -3,8 +3,9 @@ server/node_modules
 
 frontend/.env
 frontend/.env.local
-frontend/.env.development.local
+
 
 server/.env
 server/.env.local
 
+.gitignore
