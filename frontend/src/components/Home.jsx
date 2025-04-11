@@ -5,17 +5,17 @@ import axios from 'axios'
 import { useEffect } from 'react'
 
 function Home() {
+   
     const [todos, setTodos] = React.useState([])
     const [loading, setLoading] = React.useState(true)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect( () => {
-         axios.get('http://localhost:3000/getTodos')
-        .then((response) => {
+         axios.get(`http://localhost:3000/getTodos`)
+         .then((response) => {
             setTodos(response.data);
         }).catch((error) => {
             console.error('Error fetching todos:', error);
         });
-    }, [loading,])
+    }, [loading])
     return (
         <div className='home'>
             <h2 className='title-todo'> Todo List</h2>

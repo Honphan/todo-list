@@ -3,7 +3,8 @@ import axios from 'axios'
 
 function TodoItem({ todo, index, loading, setLoading }) {
     const onComplete = (id) => {
-         axios.patch(`http://localhost:3000/completeTodo/${id}`, {completed: todo.completed})
+        axios.patch(`http://localhost:3000/completeTodo/${id}`, { completed: todo.completed })
+
         .then((response) => {
             console.log(response.data);
             setLoading(!loading)

@@ -1,5 +1,8 @@
+
 import React from 'react'
 import axios from 'axios'
+
+
 
 function Create({loading, setLoading }) {
     const [text, setText] = React.useState('')
@@ -12,7 +15,8 @@ function Create({loading, setLoading }) {
     const handleClickButton = async () => {
         if (text.trim() === '') return // Prevent adding empty todos
         console.log(text)
-        await axios.post('http://localhost:3000/addTodo', {task : text})
+        // filepath: e:\mern\todo\frontend\src\components\Create.jsx
+        axios.post(`http://localhost:3000/addTodo`, { task: text })
         .then((response) => {
             console.log(response.data);
             setLoading(!loading)
