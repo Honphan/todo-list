@@ -16,7 +16,7 @@ function Create({loading, setLoading }) {
         if (text.trim() === '') return // Prevent adding empty todos
         console.log(text)
         // filepath: e:\mern\todo\frontend\src\components\Create.jsx
-        axios.post(`http://localhost:3000/addTodo`, { task: text })
+        axios.post(`${import.meta.env.VITE_API_URL}/addTodo`, { task: text })
         .then((response) => {
             console.log(response.data);
             setLoading(!loading)

@@ -9,7 +9,7 @@ function Home() {
     const [todos, setTodos] = React.useState([])
     const [loading, setLoading] = React.useState(true)
     useEffect( () => {
-         axios.get(`http://localhost:3000/getTodos`)
+         axios.get(`${import.meta.env.VITE_API_URL}/getTodos`)
          .then((response) => {
             setTodos(response.data);
         }).catch((error) => {

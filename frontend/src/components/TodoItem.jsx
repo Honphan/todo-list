@@ -3,7 +3,7 @@ import axios from 'axios'
 
 function TodoItem({ todo, index, loading, setLoading }) {
     const onComplete = (id) => {
-        axios.patch(`http://localhost:3000/completeTodo/${id}`, { completed: todo.completed })
+        axios.patch(`${import.meta.env.VITE_API_URL}/completeTodo/${id}`, { completed: todo.completed })
 
         .then((response) => {
             console.log(response.data);
@@ -14,7 +14,7 @@ function TodoItem({ todo, index, loading, setLoading }) {
         });
     }
     const onDelete = (id) => {
-        axios.delete(`http://localhost:3000/deleteTodo/${id}`)
+        axios.delete(`${import.meta.env.VITE_API_URL}/deleteTodo/${id}`)
         .then((response) => {
             console.log(response.data);
             setLoading(!loading)

@@ -19,11 +19,10 @@ const app = express();
 
 app.use(
   cors({
-    origin: 'https://todo-list-q5u2.vercel.app/',
+    origin: 'http://localhost:5173',
   })
 );
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 
 
