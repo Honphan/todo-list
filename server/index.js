@@ -2,14 +2,30 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const Task = require('./model/task');
+require('dotenv').config()
 
-mongoose.connect('mongodb://localhost:27017/todo')
+const connnectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URL);
+    console.log('MongoDB connected');
+} catch (err) {
+    console.error('MongoDB connection error:', err);
+}
+}
+
+connnectDB();
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: 'https://todo-list-q5u2.vercel.app/',
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+
 
 
 app.post("/addTodo", (req, res) => {
@@ -71,5 +87,5 @@ app.patch('/completeTodo/:id', (req, res) => {
 
 
 app.listen(3000, () => {
-  console.log('Server is running on port 3000');
+  console.log(`Server is running on port ${process.env.PORT}`);
 })
